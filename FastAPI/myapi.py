@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Path, HTTPException
 from typing import Optional
 from pydantic import BaseModel
+import uvicorn
 
 app = FastAPI()
 
@@ -68,3 +69,7 @@ def delete_student(*,student_id: int = Path(..., description="Student ID hereeee
         return {"message": "Student not found"}
     del students[student_id]
     return {"message": "Student deleted successfully"}
+
+
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8010)
